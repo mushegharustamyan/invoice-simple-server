@@ -4,11 +4,14 @@ const cors = require("cors")
 const connectionInit = require("./db/init")
 const { sequelize } = require("./db/sequelize")
 const { createRoles, createAccountant, createDepEmployee, createAdmin } = require("./db/migrations")
+const {configureRouter} = require("./utils/configureApp")
 
 const app = express()
 
 app.use(cors({ origin: "*" }))
 app.use(express.json())
+
+configureRouter(app)
 
 const port = 5001
 

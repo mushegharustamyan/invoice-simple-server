@@ -1,7 +1,15 @@
 const {signin} = require("../controllers/auth")
+const { verifyAccountent , verifyDepartmentEmployee} = require("../middlewares/verifications")
+const accountantRouter = require("../routes/accountant/invoice")
+const departmentInvoiceRouter = require("../routes/department/invoice")
 
-const configureRouter = (app) => {
+exports.configureRouter = (app) => {
   app.use("/auth" , signin)
-}
 
-exports.module = configureRouter
+  // accountant
+  app.use("/accountant/invoices" , verifyAccountent , accountantRouter)
+
+  // department employee
+
+  app.use("/department/invoices" , verifyDepartmentEmployee , departmentInvoiceRouter)
+}
