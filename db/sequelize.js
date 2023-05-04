@@ -30,6 +30,9 @@ const User = sequelize.define("users" , {
   theme: {
     type: DataTypes.STRING
   },
+  departmentId: {
+    type: DataTypes.INTEGER
+  }
 })
 
 const Invoice = sequelize.define("invoices" , {
@@ -90,9 +93,13 @@ const Ticket = sequelize.define("tickets" , {
   description: {
     type: DataTypes.STRING,
     allowNull: false
+  },
+  date: {
+    type: DataTypes.STRING
   }
 })
 
 User.belongsTo(Role, {foreignKey: "roleId"})
+Invoice.belongsTo(Ticket, {foreignKey: "ticketId"})
 
 module.exports = {sequelize, User, Invoice, Ticket, Role}
