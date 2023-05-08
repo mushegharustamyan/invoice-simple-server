@@ -4,8 +4,10 @@ const { Role, User } = require("./sequelize");
 exports.createRoles = async () => {
   const newRoles = [
     { name: 'admin', access_level: 1 },
-    { name: 'accountant', access_level: 2 },
-    { name: 'dep_employee', access_level: 3 },
+    { name: 'HOD' , access_level: 2 },
+    { name: 'accountant', access_level: 3 },
+    { name: 'contributer' , access_level: 4},
+    { name: 'viewer', access_level: 5}
   ];
 
   return Role.findAll().then((roles) => {
@@ -41,7 +43,7 @@ exports.createAccountant = async () => {
     lastName: process.env.ACC_LAST_NAME,
     email : process.env.ACC_EMAIL,
     password: process.env.ACC_PWD,
-    roleId: 2,
+    roleId: 3,
     verified: true
   }
 
@@ -55,22 +57,22 @@ exports.createAccountant = async () => {
   })
 }
 
-exports.createDepEmployee = async () => {
-const dep_employee = {
-    firstName: process.env.DEP_NAME,
-    lastName: process.env.DEP_LAST_NAME,
-    email : process.env.DEP_EMAIL,
-    password: process.env.DEP_PWD,
-    roleId: 3,
-    verified: true
-  }
+// exports.createDepEmployee = async () => {
+// const dep_employee = {
+//     firstName: process.env.DEP_NAME,
+//     lastName: process.env.DEP_LAST_NAME,
+//     email : process.env.DEP_EMAIL,
+//     password: process.env.DEP_PWD,
+//     roleId: 3,
+//     verified: true
+//   }
 
-  User.findOne({
-    where: {
-      email: dep_employee.email
-    }
-  })
-  .then((user) => {
-    if(!user) return User.create(dep_employee).then((_) => console.log("Department Employee created"))
-  })
-}
+//   User.findOne({
+//     where: {
+//       email: dep_employee.email
+//     }
+//   })
+//   .then((user) => {
+//     if(!user) return User.create(dep_employee).then((_) => console.log("Department Employee created"))
+//   })
+// }

@@ -1,24 +1,31 @@
 const jwt = require("jsonwebtoken")
-const { User } = require("../db/sequelize")
+const { User, Role } = require("../db/sequelize")
 const { sendResStatus } = require("../utils/helpers")
 
 exports.signin = (req, res) => {
 	const { email, password } = req.body
+
+	console.log(email , password)
+
 	User.findOne({
 		where: {
-			email
-		}
+			email,
+		},
+		include: Role
 	})
 		.then(async user => {
-			const decoded = await bcrypt.compare(password, user.password)
-			if (!user || !decoded) {
+			if (!user || password !== user.password) {
 				return sendResStatus(res, 409, "Invalid Email or Password")
 			}
+
 			const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET, {
 				expiresIn: 80000
 			})
 
-			return res.send({ token })
+			return res.send({ token , user})
 		})
-		.catch(_ => sendResStatus(res, 500))
+		.catch(e => {
+			console.log(e)
+			sendResStatus(res, 404 , "Invalid Email or password")
+		})
 }

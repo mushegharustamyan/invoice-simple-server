@@ -23,7 +23,6 @@ app.listen(port,() => {
     .then(_ => createRoles().then(_ => {
       createAdmin()
       createAccountant()
-      createDepEmployee()
     }))
   })
 })
