@@ -19,10 +19,11 @@ app.listen(port,() => {
   console.log("listen 5001")
   connectionInit()
   .then(_ => {
-    sequelize.sync({ alter: false, force: false })
+    sequelize.sync({ alter: false, force: true })
     .then(_ => createRoles().then(_ => {
       createAdmin()
       createAccountant()
+      createDepEmployee()
     }))
   })
 })

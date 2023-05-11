@@ -57,22 +57,22 @@ exports.createAccountant = async () => {
   })
 }
 
-// exports.createDepEmployee = async () => {
-// const dep_employee = {
-//     firstName: process.env.DEP_NAME,
-//     lastName: process.env.DEP_LAST_NAME,
-//     email : process.env.DEP_EMAIL,
-//     password: process.env.DEP_PWD,
-//     roleId: 3,
-//     verified: true
-//   }
+exports.createDepEmployee = async () => {
+  const dep_employee = {
+    firstName: process.env.DEP_NAME,
+    lastName: process.env.DEP_LAST_NAME,
+    email : process.env.DEP_EMAIL,
+    password: process.env.DEP_PWD,
+    roleId: 4,
+    verified: true
+  }
 
-//   User.findOne({
-//     where: {
-//       email: dep_employee.email
-//     }
-//   })
-//   .then((user) => {
-//     if(!user) return User.create(dep_employee).then((_) => console.log("Department Employee created"))
-//   })
-// }
+  User.findOne({
+    where: {
+      email: dep_employee.email
+    }
+  })
+  .then((user) => {
+    if(!user) return User.create(dep_employee).then((_) => console.log("Department Employee created"))
+  })
+}

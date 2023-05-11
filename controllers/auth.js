@@ -1,6 +1,6 @@
 const jwt = require("jsonwebtoken")
 const { User, Role } = require("../db/sequelize")
-const { sendResStatus } = require("../utils/helpers")
+const { sendResStatus, sendResBody } = require("../utils/helpers")
 
 exports.signin = (req, res) => {
 	const { email, password } = req.body
@@ -28,4 +28,16 @@ exports.signin = (req, res) => {
 			console.log(e)
 			sendResStatus(res, 404 , "Invalid Email or password")
 		})
+}
+
+exports.refresh = async (req , res) => {
+	const {token} = req.headers
+
+	console.log(token)
+
+	const {id} = jwt.decode(token)
+
+	User.findByPk(id, {include: Role})
+	.then((user) => sendResBody(res , 200 , user))
+	.catch(() => sendResStatus(res, 500))
 }

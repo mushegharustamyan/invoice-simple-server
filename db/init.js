@@ -5,7 +5,7 @@ const connectionInit = async () =>
         const connection = mysql.createConnection({
             host: "localhost",
             user: "root",
-            password: "root",
+            password: "",
             port: "3306"
         })
         connection.query('CREATE DATABASE IF NOT EXISTS invoice', (err , res) => {
