@@ -15,6 +15,15 @@ const User = sequelize.define("users" , {
     type: DataTypes.STRING,
     allowNull: false
   },
+  SID: {
+    type: DataTypes.STRING,
+    allowNull: false,
+    unique: true
+  },
+  username: {
+    type: DataTypes.STRING,
+    allowNull: false
+  },
   password: {
     type: DataTypes.STRING,
     allowNull: false
@@ -29,6 +38,42 @@ const User = sequelize.define("users" , {
   },
   theme: {
     type: DataTypes.STRING
+  },
+  departmentId: {
+    type: DataTypes.INTEGER
+  }
+})
+
+const ADUser = sequelize.define("ADUsers" , {
+  id: {
+    autoIncrement: true,
+    primaryKey: true,
+    type: DataTypes.INTEGER
+  },
+  email: {
+    type: DataTypes.STRING,
+    allowNull: false
+  },
+  SID: {
+    type: DataTypes.STRING,
+    allowNull: false,
+    unique: true
+  },
+  username: {
+    type: DataTypes.STRING,
+    allowNull: false
+  },
+  password: {
+    type: DataTypes.STRING,
+    allowNull: false
+  },
+  firstName: {
+    type: DataTypes.STRING,
+    allowNull: false
+  },
+  lastName: {
+    type: DataTypes.STRING,
+    allowNull: false
   },
   departmentId: {
     type: DataTypes.INTEGER

@@ -1,5 +1,5 @@
 const { Role, User } = require("./sequelize");
-
+const crypto = require("crypto")
 
 exports.createRoles = async () => {
   const newRoles = [
@@ -17,10 +17,12 @@ exports.createRoles = async () => {
 
 exports.createAdmin = async () => {
   const admin = {
+    SID: crypto.randomUUID(),
     firstName: process.env.ADMIN_NAME,
     lastName: process.env.ADMIN_LAST_NAME,
     email : process.env.ADMIN_EMAIL,
     password: process.env.ADMIN_PWD,
+    username: process.env.ADMIN_USERNAME,
     roleId: 1,
     verified: true
   }
@@ -39,10 +41,12 @@ exports.createAdmin = async () => {
 
 exports.createAccountant = async () => {
   const accountant = {
+    SID: crypto.randomUUID(),
     firstName: process.env.ACC_NAME,
     lastName: process.env.ACC_LAST_NAME,
     email : process.env.ACC_EMAIL,
     password: process.env.ACC_PWD,
+    username: process.env.ACC_USERNAME,
     roleId: 3,
     verified: true
   }
@@ -59,9 +63,11 @@ exports.createAccountant = async () => {
 
 exports.createDepEmployee = async () => {
   const dep_employee = {
+    SID: crypto.randomUUID(),
     firstName: process.env.DEP_NAME,
     lastName: process.env.DEP_LAST_NAME,
     email : process.env.DEP_EMAIL,
+    username: process.env.DEP_USERNAME,
     password: process.env.DEP_PWD,
     roleId: 4,
     verified: true

@@ -22,8 +22,8 @@ app.listen(port,() => {
     sequelize.sync({ alter: false, force: true })
     .then(_ => createRoles().then(_ => {
       createAdmin()
-      createAccountant()
-      createDepEmployee()
+      // createAccountant()
+      // createDepEmployee()
     }))
   })
 })
