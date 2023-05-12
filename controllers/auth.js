@@ -14,6 +14,7 @@ exports.signin = (req, res) => {
 		include: Role
 	})
 		.then(async user => {
+			console.log(user)
 			if (!user || password !== user.password) {
 				return sendResStatus(res, 409, "Invalid Email or Password")
 			}
