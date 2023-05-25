@@ -67,11 +67,7 @@ const ADUser = sequelize.define("ADUsers" , {
     type: DataTypes.STRING,
     allowNull: false
   },
-  firstName: {
-    type: DataTypes.STRING,
-    allowNull: false
-  },
-  lastName: {
+  fullname : {
     type: DataTypes.STRING,
     allowNull: false
   },
@@ -147,4 +143,4 @@ const Ticket = sequelize.define("tickets" , {
 User.belongsTo(Role, {foreignKey: "roleId"})
 Invoice.belongsTo(Ticket, {foreignKey: "ticketId"})
 
-module.exports = {sequelize, User, Invoice, Ticket, Role}
+module.exports = {sequelize, User, Invoice, Ticket, Role , ADUser}
