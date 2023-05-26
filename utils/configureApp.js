@@ -2,6 +2,7 @@ const {signin , refresh} = require("../controllers/auth")
 const { verifyAccountent , verifyDepartmentEmployee} = require("../middlewares/verifications")
 const accountantRouter = require("../routes/accountant/invoice")
 const adminADUsersRouter = require("../routes/admin/ad-users")
+const adminUsersRouter = require("../routes/admin/users")
 const departmentInvoiceRouter = require("../routes/department/invoice")
 const roleRouter = require("../routes/role")
 
@@ -20,4 +21,5 @@ exports.configureRouter = (app) => {
 
   app.use("/admin/roles", roleRouter)
   app.use("/admin/ad-users", adminADUsersRouter)
+  app.use("/admin/users", adminUsersRouter)
 }

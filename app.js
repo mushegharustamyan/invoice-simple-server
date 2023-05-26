@@ -20,10 +20,10 @@ app.listen(port,() => {
   connectionInit()
   .then(_ => {
     sequelize.sync({ alter: false, force: true })
-    .then(_ => createRoles().then(_ => {
-      createAdmin()
-      createAccountant()
-      createDepEmployee()
+    .then(_ => createRoles().then( async (_) => {
+      await createAdmin()
+      await createAccountant()
+      await createDepEmployee()
       createAdUsers()
     }))
   })
