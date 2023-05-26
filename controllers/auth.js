@@ -38,8 +38,6 @@ exports.refresh = async (req , res) => {
 
 	const {id} = jwt.decode(token)
 
-	console.log(id)
-
 	User.findByPk(id, {include: Role})
 	.then((user) => sendResBody(res , 200 , user))
 	.catch(() => sendResStatus(res, 500))
