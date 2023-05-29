@@ -67,7 +67,7 @@ exports.createDepEmployee = async () => {
     email : process.env.DEP_EMAIL,
     username: process.env.DEP_USERNAME,
     password: process.env.DEP_PWD,
-    roleId: 4,
+    roleId: 2,
     verified: true
   }
 
