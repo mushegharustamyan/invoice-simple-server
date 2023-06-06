@@ -1,6 +1,7 @@
-const { Role, User, ADUser } = require("./sequelize");
+const { Role, User, ADUser, Invoice } = require("./sequelize");
 const {users} = require("./ad-users") 
-const crypto = require("crypto")
+const crypto = require("crypto");
+const { invoices } = require("./invoices");
 
 exports.createRoles = async () => {
   const newRoles = [
@@ -83,4 +84,8 @@ exports.createDepEmployee = async () => {
 
 exports.createAdUsers = async () => {
   return ADUser.bulkCreate(users).then(() => console.log("AD Users created")).catch(e => console.log(e))
+}
+
+exports.createInvoices = async () => {
+  return Invoice.bulkCreate(invoices).then(() => console.log("Invoices created")).catch(e => console.log(e))
 }

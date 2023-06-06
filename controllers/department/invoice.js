@@ -18,9 +18,7 @@ exports.index = (req , res) => {
             endDate ? endDate : "31/12/9999",
           ],
         },
-        where: {
-          departmentId: user.departmentId
-        }
+        department: user.department
       }
     })
     .then((result) => sendResStatus(res ,200 , result))
