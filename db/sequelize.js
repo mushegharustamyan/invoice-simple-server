@@ -35,8 +35,8 @@ const User = sequelize.define("users" , {
   theme: {
     type: DataTypes.STRING
   },
-  departmentId: {
-    type: DataTypes.INTEGER
+  department: {
+    type: DataTypes.STRING
   }
 })
 

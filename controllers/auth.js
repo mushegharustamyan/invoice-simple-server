@@ -3,7 +3,7 @@ const { User, Role } = require("../db/sequelize")
 const { sendResStatus, sendResBody } = require("../utils/helpers")
 
 exports.signin = (req, res) => {
-	const { username, password } = req.body
+	const { email, password } = req.body
 
 	User.findOne({
 		where: {
